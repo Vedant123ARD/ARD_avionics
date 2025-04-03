@@ -25,7 +25,7 @@
 #define BME280_CHIP_ID  0x60 /* BME280 has chip-id 0x60 */
 
 /**
- * Mode of BMP280 module operation.
+ * Mode of BMP280 module oper
  * Forced - Measurement is initiated by user.
  * Normal - Continues measurement.
  */
