@@ -1,0 +1,2 @@
+../Core/Inc/Altitude_Measurement.c:15:6:init_bmp280	16	static
+../Core/Inc/Altitude_Measurement.c:25:6:read_altitude	16	static

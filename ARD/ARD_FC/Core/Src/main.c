@@ -19,7 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "bmp280.h"
-
+#include "Altitude_Measurement.h"
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -47,7 +50,11 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 BMP280_HandleTypedef bmp280;
-float temperature, pressure, humidity;
+//float pressure, temperature, humidity;
+//float max_pressure = 0.0f;
+//float min_pressure = 100000000.0f;
+//float altitude;
+
 //#define BMP280_I2C_ADDRESS_0  0x76
 //#define BMP280_I2C_ADDRESS_1  0x77
 
@@ -101,6 +108,10 @@ int main(void)
   MX_I2C1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  void SystemClock_Config(void);
+  //static void MX_I2C1_Init(void);
+ // static void MX_USART1_UART_Init(void);
+  init_bmp280(&bmp280, &hi2c1);
 
   /* USER CODE END 2 */
 
@@ -109,7 +120,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  bmp280_read_float(&bmp280, &temperature, &pressure, &humidity);
+      read_altitude(&bmp280);
+      HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
